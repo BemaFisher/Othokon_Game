@@ -1,6 +1,7 @@
 # Author: Begaiym Fisher
 # Date: 5/22/2021
-# Description:The board for a two-player game that is played on a 4x4 grid. A player moving one of their pieces
+# Description:
+#     The board for a two-player game that is played on a 4x4 grid. A player moving one of their pieces
 #     orthogonally or diagonally as far as it can go until it hits another piece or the edge of the board.
 #     After the piece stops, any opponent pieces on orthogonally adjacent squares are flipped over
 #     to its color. A player wins upon making a move that either flips over the remaining opponent pieces or
@@ -170,7 +171,7 @@ class OrthokonBoard:
                     return False
 
         self._active_player = self._board[current_x][current_y]  # now my active player is whichever current color
-        self._board[dest_x][dest_y] = self._board[current_x][current_y]
+        # self._board[dest_x][dest_y] = self._board[current_x][current_y]
         self._board[current_x][current_y] = "-"
         self.print_board()
 
@@ -180,15 +181,18 @@ class OrthokonBoard:
                 self._board[dest_x - 1][dest_y] = self._active_player
 
         if 0 <= dest_x + 1 < 4:
-            if self._board[dest_x + 1][dest_y] != self._active_player and self._board[dest_x + 1][dest_y] != "-":  # down
+            if self._board[dest_x + 1][dest_y] != self._active_player and self._board[dest_x + 1][
+                dest_y] != "-":  # down
                 self._board[dest_x + 1][dest_y] = self._active_player
 
         if 0 <= dest_y - 1 < 4:
-            if self._board[dest_x][dest_y - 1] != self._active_player and self._board[dest_x][dest_y - 1] != "-":  # left
+            if self._board[dest_x][dest_y - 1] != self._active_player and self._board[dest_x][
+                dest_y - 1] != "-":  # left
                 self._board[dest_x][dest_y - 1] = self._active_player
 
         if 0 <= dest_y + 1 < 4:
-            if self._board[dest_x][dest_y + 1] != self._active_player and self._board[dest_x][dest_y + 1] != "-":  # right
+            if self._board[dest_x][dest_y + 1] != self._active_player and self._board[dest_x][
+                dest_y + 1] != "-":  # right
                 self._board[dest_x][dest_y + 1] = self._active_player
 
         self.print_board()
@@ -206,3 +210,6 @@ class OrthokonBoard:
 # # board.make_move(3, 0, 1, 2)
 # # board.make_move(2, 0, 0, 0)
 # print(board.get_current_state())
+
+
+
