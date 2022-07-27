@@ -46,6 +46,7 @@ class OrthokonBoard:
         for row in self._board:  # add all items in board to a set
             for slot in row:
                 new_set.add(slot)
+
         # if opponent player not in set, it means active player flipped all the colors
         if self._opponent_player not in new_set:
             if self._active_player == "Y":
@@ -62,6 +63,7 @@ class OrthokonBoard:
             self._opponent_player = "Y"
         print(self._opponent_player)
 
+        
     def make_move(self, current_x, current_y, dest_x, dest_y):
         """ Takes four parameters (current coord and destination coord, checks if the move is legal,
         records the moves, if the game has been won, and returns true"""
@@ -169,9 +171,9 @@ class OrthokonBoard:
             if 0 <= dest_x + 1 < 4 and 0 <= dest_y + 1 < 4:
                 if self._board[dest_x + 1][dest_y + 1] == "-":
                     return False
-
-        self._active_player = self._board[current_x][current_y]  # now my active player is whichever current color
-        # self._board[dest_x][dest_y] = self._board[current_x][current_y]
+        
+        # update active player
+        self._active_player = self._board[current_x][current_y]  
         self._board[current_x][current_y] = "-"
         self.print_board()
 
@@ -200,16 +202,5 @@ class OrthokonBoard:
         self.check_win()
 
         return True
-
-
-# board = OrthokonBoard()
-# board.make_move(3, 2, 1, 2)  # The yellow player moves a piece diagonally, flipping one red piece to yellow
-# board.make_move(3, 0, 1, 0)
-# board.make_move(3, 1, 1, 1)
-# board.make_move(3, 3, 1, 3)
-# # board.make_move(3, 0, 1, 2)
-# # board.make_move(2, 0, 0, 0)
-# print(board.get_current_state())
-
 
 
